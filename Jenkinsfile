@@ -9,7 +9,11 @@ pipeline {
 
     stage('check files avaible') {
       steps {
-        sh 'ls -la'
+        node(label: 'Install and Build') {
+          sh '''npm install
+npm run build'''
+        }
+
       }
     }
 
