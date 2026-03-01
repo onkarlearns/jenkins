@@ -7,7 +7,7 @@ pipeline {
       }
     }
 
-    stage('error') {
+    stage('check files avaible') {
       steps {
         sh 'ls -la'
       }
