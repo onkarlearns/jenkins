@@ -7,11 +7,11 @@ pipeline {
       }
     }
 
-    stage('check files avaible') {
+    stage('Install and Build') {
       steps {
         node(label: 'Install and Build') {
-          sh '''npm install
-npm run build'''
+          sh 'npm install'
+          sh 'npm run build'
         }
 
       }
