@@ -28,10 +28,14 @@ pipeline {
 
         stage('Push to GitHub Container Registry') {
             steps {
-                sh '''
-                    docker push ${REGISTRY}/${IMAGE_NAME}:${BUILD_NUMBER}
-                    docker push ${REGISTRY}/${IMAGE_NAME}:latest
-                '''
+                withCredentials([usernamePassword(credentialsId: 'ghcr-token', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
+                    sh '''
+                        echo $GIT_PASSWORD | docker login ${REGISTRY} -u $GIT_USERNAME --password-stdin
+                        docker push ${REGISTRY}/${IMAGE_NAME}:${BUILD_NUMBER}
+                        docker push ${REGISTRY}/${IMAGE_NAME}:latest
+                        docker logout ${REGISTRY}
+                    '''
+                }
             }
         }
     }
