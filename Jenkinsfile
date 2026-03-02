@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        DOCKER_IMAGE = 'onkarlearns/jenkins'
+        DOCKER_IMAGE = 'onkarsathe007/jenkins'
     }
     stages {
         stage('Install') {
