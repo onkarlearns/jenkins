@@ -38,4 +38,28 @@ pipeline {
             }
         }
     }
+
+    post {
+        failure {
+            emailext(
+                subject: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+                body: """
+                    <p>Job Failed!</p>
+                    <p><b>Build URL:</b> <a href="${env.BUILD_URL}">${env.BUILD_URL}</a></p>
+                    <p><b>Branch:</b> ${env.GIT_BRANCH}</p>
+                """,
+                to: 'your-email@example.com'
+            )
+        }
+        success {
+            emailext(
+                subject: "SUCCESS: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+                body: """
+                    <p>Build Successful!</p>
+                    <p><b>Build URL:</b> <a href="${env.BUILD_URL}">${env.BUILD_URL}</a></p>
+                """,
+                to: 'your-email@example.com'
+            )
+        }
+    }
 }
