@@ -48,7 +48,7 @@ pipeline {
                     <p><b>Build URL:</b> <a href="${env.BUILD_URL}">${env.BUILD_URL}</a></p>
                     <p><b>Branch:</b> ${env.GIT_BRANCH}</p>
                 """,
-                to: 'your-email@gmail.com',
+                to: 'onkarsathe96k@gmail.com',
                 credentialsId: 'gmail-creds'
             )
         }
@@ -59,7 +59,7 @@ pipeline {
                     <p>Build Successful!</p>
                     <p><b>Build URL:</b> <a href="${env.BUILD_URL}">${env.BUILD_URL}</a></p>
                 """,
-                to: 'your-email@gmail.com',
+                to: 'onkarsathe96k@gmail.com',
                 credentialsId: 'gmail-creds'
             )
         }
