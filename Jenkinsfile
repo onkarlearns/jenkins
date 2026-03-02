@@ -41,25 +41,14 @@ pipeline {
 
     post {
         failure {
-            emailext(
-                subject: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-                body: """
-                    <p>Job Failed!</p>
-                    <p><b>Build URL:</b> <a href="${env.BUILD_URL}">${env.BUILD_URL}</a></p>
-                    <p><b>Branch:</b> ${env.GIT_BRANCH}</p>
-                """,
-                to: 'onkarsathe96k@gmail.com'
-            )
+            mail to: 'onkarsathe96k@gmail.com',
+                 subject: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+                 body: "Build failed! Check: ${env.BUILD_URL}"
         }
         success {
-            emailext(
-                subject: "SUCCESS: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-                body: """
-                    <p>Build Successful!</p>
-                    <p><b>Build URL:</b> <a href="${env.BUILD_URL}">${env.BUILD_URL}</a></p>
-                """,
-                to: 'onkarsathe96k@gmail.com'
-            )
+            mail to: 'onkarsathe96k@gmail.com',
+                 subject: "SUCCESS: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+                 body: "Build successful! ${env.BUILD_URL}"
         }
     }
 }
