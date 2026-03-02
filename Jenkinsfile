@@ -40,15 +40,8 @@ pipeline {
     }
 
     post {
-        failure {
-            mail to: 'onkarsathe96k@gmail.com',
-                 subject: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-                 body: "Build failed! Check: ${env.BUILD_URL}"
-        }
-        success {
-            mail to: 'onkarsathe96k@gmail.com',
-                 subject: "SUCCESS: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-                 body: "Build successful! ${env.BUILD_URL}"
+        always {
+            echo "Build completed"
         }
     }
 }
