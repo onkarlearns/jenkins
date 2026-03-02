@@ -48,7 +48,7 @@ pipeline {
                     <p><b>Build URL:</b> <a href="${env.BUILD_URL}">${env.BUILD_URL}</a></p>
                     <p><b>Branch:</b> ${env.GIT_BRANCH}</p>
                 """,
-                to: 'contact@onkarsathe.co.in'
+                to: 'onkarsathe96k@gmail.com'
             )
         }
         success {
@@ -58,7 +58,7 @@ pipeline {
                     <p>Build Successful!</p>
                     <p><b>Build URL:</b> <a href="${env.BUILD_URL}">${env.BUILD_URL}</a></p>
                 """,
-                to: 'contact@onkarsathe.co.in'
+                to: 'onkarsathe96k@gmail.com'
             )
         }
     }
