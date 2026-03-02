@@ -7,7 +7,7 @@ app.get("/", (_req: Request, res: Response) => {
   res.json({ message: "Hello from Express + TypeScript!" });
 });
 
-app.get("/health", (_req: Request, res: Response) => 
+app.get("/health", (_req: Request, res: Response) => {
   res.json({ status: "ok", timestamp: new Date().toISOString() });
 });
 
