@@ -1,11 +1,20 @@
 pipeline {
-  agent any
-  stages {
-    stage('checkout repo') {
-      steps {
-        git(url: 'https://github.com/onkarlearns/jenkins.git', branch: 'main')
-      }
+    agent {
+        docker {
+            image 'node:20'
+        }
     }
+    stages {
+        stage('Install') {
+            steps {
+                sh 'npm install'
+            }
+        }
 
-  }
+        stage('Build') {
+            steps {
+                sh 'npm run build'
+            }
+        }
+    }
 }
